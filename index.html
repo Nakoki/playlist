@@ -15,7 +15,7 @@
                     <p class="title">Mac, Mec, Mic!</p>
                     <p class="duration">1:35</p>
                 </div>
-                <div class="listsong">
+                <div class="listsong active">
                     <img src="./img/macmecmic.png"/>
                     <p class="title">Mac, Mec, Mic!</p>
                     <p class="duration">1:35</p>
@@ -78,9 +78,17 @@
             <aside></aside>
         </div>
         <footer>
-            <button id="prev"><span class="icon"></span></button>
-            <button id="play"><span class="icon"></span></button>
-            <button id="next"><span class="icon"></span></button>
+            <div id="prog">
+                <p class="time" id="elTime">0:52</p>
+                <progress id="songProg" value="59" max="100"></progress>
+                <p class="time" id="totalTime">1:35</p>
+            </div>
+            
+            <div id="buttons">
+                <button id="prev"><span class="icon"></span></button>
+                <button id="play"><span class="icon"></span></button>
+                <button id="next"><span class="icon"></span></button>
+            </div>
         </footer>
     </div>
 </body>
