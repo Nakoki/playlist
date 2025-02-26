@@ -40,7 +40,7 @@ let songs = [
         "elapsed":0
     },
     {
-        "name":"Alltimelow",
+        "name":"All Time Low",
         "duration":217,
         "img":"./fortnite.png",
         "source":"./dekupaptamdem.mp3",
@@ -48,11 +48,11 @@ let songs = [
         "elapsed":0
     },
     {
-        "name":"",
-        "duration":136,
-        "img":"./.png",
-        "source":"./.mp3",
+        "name":"Sota l'aigua (feat. Marçal i Arlet)",
+        "duration":137,
+        "img":"./sotalaigua.png",
+        "source":"./sotalaigua.mp3",
         "playing":false,
-        "elapsed":0
+        "elapsed":0 
     },
 ]
