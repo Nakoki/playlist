@@ -64,12 +64,13 @@ window.onload = function(){
     else{
         songs = JSON.parse(localStorage.getItem("songs"));
     }
-    songs.forEach(song => {
+    songs.forEach((song,index) => {
         let div = document.createElement("div");
         div.classList.add("listsong");
         if(song.playing == true){
             div.classList.add("active");
         }
+        div.setAttribute("data-index",index);
         let img = document.createElement("img");
         img.setAttribute("src",song.img);
         
@@ -87,6 +88,8 @@ window.onload = function(){
         duration.innerText = minutes + ":" + extraSeconds;
         
         let audio = document.createElement("audio");
+        audio.setAttribute("id",song.source);
+        audio.setAttribute("data-index",index);
 
         let source = document.createElement("source");
         source.setAttribute("src",song.source);
@@ -100,7 +103,6 @@ window.onload = function(){
         document.getElementById("list").appendChild(div);
         div.addEventListener("click",(ev) => selectSong(ev.target));
     });
-
 
 
     document.getElementById("prev").onclick = previus;
