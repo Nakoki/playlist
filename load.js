@@ -12,7 +12,7 @@ let songs = [
         "duration":95,
         "img":"./macmecmic.png",
         "source":"./macmecmic.mp4",
-        "playing":true,
+        "playing":false,
         "elapsed":0
     },
     {
@@ -56,3 +56,15 @@ let songs = [
         "elapsed":0 
     },
 ]
+
+window.onload = function(){
+    if(localStorage.getItem("songs") === null){
+        localStorage.setItem("songs",JSON.stringify(songs));
+    }
+    else{
+        songs = JSON.parse(localStorage.getItem("songs"));
+    }
+    songs.forEach(song => {
+        
+    });
+}
