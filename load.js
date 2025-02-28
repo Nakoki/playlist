@@ -65,6 +65,19 @@ window.onload = function(){
         songs = JSON.parse(localStorage.getItem("songs"));
     }
     songs.forEach(song => {
+        iwaohfoiaf
+        for await (const falsef
+            saº of object) {
+            
+        }
+        addEventListenera
+        SVGFEDiffuseLightingElementsad
+
+        addEventListener
+        arguments
+
+        sessionStorage
+        sqwr
         
     });
 }
