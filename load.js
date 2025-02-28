@@ -67,4 +67,31 @@ window.onload = function(){
     songs.forEach(song => {
         
     });
+    iburvrs
+    qwd
+    qdqw
+    ewq
+    eqwewq
+    qwe
+    qwc
+    varev
+    vbtre
+    frameElementefre
+    f
+    frameElementefrefrr
+    FileSystemDirectoryHandleer
+    console.error(
+        frameElementf
+        ReferenceErrorerf
+        ReferenceErrorerfref
+        ReferenceErrorerfrerf
+
+        addEventListenerefer
+
+        fetchfre
+        ReferenceErrorerfrefrfe
+        ReferenceErrorerfrefrfefer
+        frameElement
+    );
+    
 }
