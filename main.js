@@ -1,12 +1,16 @@
 
 
 function selectSong(song){
+    if(audioActiu != null){
+        audioActiu.pause();
+    }
     audioActiu = song.querySelector("audio");
     let index = audioActiu.getAttribute("data-index");
     resetplaying();
     songs[index].playing = true;
     localStorage.setItem("songs",JSON.stringify(songs));
     song.classList.add("active");
+    song.scrollIntoView();
 }
 
 function playpause(){
@@ -22,11 +26,27 @@ function playpause(){
 }
 
 function next(){
+    let index = audioActiu.getAttribute("data-index");
+    let songs = document.getElementsByClassName("listsong");
+    let nextI = (parseInt(index) + 1);
+    if(nextI >= songs.length){
+        nextI = 0;
+    }
 
+    selectSong(songs[nextI]);
+    playpause();
 }
 
 function previus(){
+    let index = audioActiu.getAttribute("data-index");
+    let songs = document.getElementsByClassName("listsong");
+    let nextI = (parseInt(index) - 1);
+    if(nextI < 0){
+        nextI = songs.length -1;
+    }
 
+    selectSong(songs[nextI]);
+    playpause();
 }
 
 function resetplaying(){
@@ -39,17 +59,11 @@ function resetplaying(){
 
 
 /*TODO oopsi:
-- next
-- prev
 - elapsed songs
-- que es pari la canço anterior quan canives de canço
-- que quan entres a la pagina et faci scroll a la canço activa
-- quan cavnies de canço tambe et faci scroll
-
 */
 
 /*TODO: nacockis
 - barra 
 - elapsed visual
-- que la icona del pause canvii quan canvies de canço (clickant a una manualment, la pausa i es mostra el play, clickant a prev o next la comença i es posa el pause)
+- que la icona del pause canvii quan canvies de canço (clickant a una manualment, la pausa i es mostra el play)
 */

@@ -98,14 +98,16 @@ window.onload = function(){
         div.appendChild(duration);
         div.appendChild(audio);
 
+        document.getElementById("list").appendChild(div);
+        div.addEventListener("click",(ev) => selectSong(ev.currentTarget));
+
         if(song.playing == true){
             div.classList.add("active");
             audioActiu = div.querySelector("audio");
-            div.scrollIntoView(true);
+            div.scrollIntoView();
         }
 
-        document.getElementById("list").appendChild(div);
-        div.addEventListener("click",(ev) => selectSong(ev.currentTarget));
+
     });
 
 
