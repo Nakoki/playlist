@@ -11,7 +11,7 @@ let songs = [
         "name":"Mac, Mec, Mic!",
         "duration":95,
         "img":"./img/macmecmic.png",
-        "source":"./songs/macmecmic.mp4",
+        "source":"./songs/macmecmic.mp3",
         "playing":false,
         "elapsed":0
     },
@@ -69,9 +69,6 @@ window.onload = function(){
     songs.forEach((song,index) => {
         let div = document.createElement("div");
         div.classList.add("listsong");
-        if(song.playing == true){
-            div.classList.add("active");
-        }
         div.setAttribute("data-index",index);
         let img = document.createElement("img");
         img.setAttribute("src",song.img);
@@ -100,6 +97,12 @@ window.onload = function(){
         div.appendChild(title);
         div.appendChild(duration);
         div.appendChild(audio);
+
+        if(song.playing == true){
+            div.classList.add("active");
+            audioActiu = div.querySelector("audio");
+            div.scrollIntoView(true);
+        }
 
         document.getElementById("list").appendChild(div);
         div.addEventListener("click",(ev) => selectSong(ev.currentTarget));
