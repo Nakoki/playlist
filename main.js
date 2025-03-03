@@ -1,7 +1,7 @@
-let audioActiu;
+
 
 function selectSong(song){
-    audioActiu = song.getElementsByTagName("audio")[0];
+    audioActiu = song.querySelector("audio");
     let index = audioActiu.getAttribute("data-index");
     resetplaying();
     songs[index].playing = true;
@@ -11,12 +11,13 @@ function selectSong(song){
 
 function playpause(){
     let imatge = document.getElementById("play")
-    if(audio.paused){
-        audio.play();
-        imatge = background-image: url("./icons/next.png");
+    console.log(audioActiu);
+    if(audioActiu.paused){
+        audioActiu.play();
+        imatge.style.backgroundImage = 'url("./icons/pause.png")';
     } else {
-        audio.pause();
-        imatge = background-image: url("./icons/pause.png");
+        audioActiu.pause();
+        imatge.style.backgroundImage = 'url("./icons/play.png")';
     }
 }
 
@@ -29,7 +30,8 @@ function previus(){
 }
 
 function resetplaying(){
-    let listSongs = document.getElementsByClassName("listsong");
+    let listSongs = document.querySelectorAll(".listsong");
+    console.log(listSongs);
     listSongs.forEach((e,i) => {
         e.classList.remove("active");
         songs[i].playing = false;

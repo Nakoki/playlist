@@ -57,6 +57,8 @@ let songs = [
     },
 ]
 
+let audioActiu;
+
 window.onload = function(){
     if(localStorage.getItem("songs") === null){
         localStorage.setItem("songs",JSON.stringify(songs));
@@ -88,7 +90,6 @@ window.onload = function(){
         duration.innerText = minutes + ":" + extraSeconds;
         
         let audio = document.createElement("audio");
-        audio.setAttribute("id",song.source);
         audio.setAttribute("data-index",index);
 
         let source = document.createElement("source");
@@ -101,7 +102,7 @@ window.onload = function(){
         div.appendChild(audio);
 
         document.getElementById("list").appendChild(div);
-        div.addEventListener("click",(ev) => selectSong(ev.target));
+        div.addEventListener("click",(ev) => selectSong(ev.currentTarget));
     });
 
 
