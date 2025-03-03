@@ -1,7 +1,7 @@
 let songs = [
     {
         "name":"Eram, Sam, Sam",
-        "duration":136,
+        "duration":136.961065,
         "img":"./img/eramsamsam.png",
         "source":"./songs/eramsamsam.mp3",
         "playing":false,
@@ -9,7 +9,7 @@ let songs = [
     },
     {
         "name":"Mac, Mec, Mic!",
-        "duration":95,
+        "duration":95.712,
         "img":"./img/macmecmic.png",
         "source":"./songs/macmecmic.mp3",
         "playing":false,
@@ -17,7 +17,7 @@ let songs = [
     },
     {
         "name":"Una Aventura Misteriosa!",
-        "duration":105,
+        "duration":104.211166,
         "img":"./img/db.png",
         "source":"./songs/makafushigi.mp3",
         "playing":false,
@@ -25,7 +25,7 @@ let songs = [
     },
     {
         "name":"Uptown Girl",
-        "duration":186,
+        "duration":186.985555,
         "img":"./img/tomatic.png",
         "source":"./songs/uptowngirl.mp3",
         "playing":false,
@@ -33,7 +33,7 @@ let songs = [
     },
     {
         "name":"We Are!",
-        "duration":171,
+        "duration":110.248354,
         "img":"./img/onepiece.png",
         "source":"./songs/weare.mp3",
         "playing":false,
@@ -41,7 +41,7 @@ let songs = [
     },
     {
         "name":"All Time Low",
-        "duration":217,
+        "duration":217.603401,
         "img":"./img/fortnite.png",
         "source":"./songs/dekupaptamdem.mp3",
         "playing":false,
@@ -49,7 +49,7 @@ let songs = [
     },
     {
         "name":"Sota l'aigua (feat. Marçal i Arlet)",
-        "duration":137,
+        "duration":137.76,
         "img":"./img/sotalaigua.png",
         "source":"./songs/sotalaigua.mp3",
         "playing":false,
@@ -77,14 +77,7 @@ window.onload = function(){
         title.classList.add("title");
         title.innerText = song.name;
 
-        let duration = document.createElement("p");
-        duration.classList.add("duration");
-        let seconds = song.duration;
-        let minutes = Math.floor(seconds/60);
-        let extraSeconds = seconds % 60;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds; 
-        duration.innerText = minutes + ":" + extraSeconds;
+
         
         let audio = document.createElement("audio");
         audio.setAttribute("data-index",index);
@@ -92,12 +85,24 @@ window.onload = function(){
         let source = document.createElement("source");
         source.setAttribute("src",song.source);
 
+        audio.currentTime = song.elapsed;
+
         audio.appendChild(source);
         div.appendChild(img);
         div.appendChild(title);
-        div.appendChild(duration);
+
         div.appendChild(audio);
 
+        let durationP = document.createElement("p");
+        durationP.classList.add("duration");
+        let seconds = song.duration;
+        let minutes = Math.floor(seconds/60);
+        let extraSeconds = seconds % 60;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds; 
+        durationP.innerText = minutes + ":" + extraSeconds;
+
+        div.appendChild(durationP);
         document.getElementById("list").appendChild(div);
         div.addEventListener("click",(ev) => selectSong(ev.currentTarget));
 

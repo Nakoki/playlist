@@ -3,6 +3,7 @@
 function selectSong(song){
     if(audioActiu != null){
         audioActiu.pause();
+        console.log(audioActiu.duration);
     }
     audioActiu = song.querySelector("audio");
     let index = audioActiu.getAttribute("data-index");
@@ -11,15 +12,19 @@ function selectSong(song){
     localStorage.setItem("songs",JSON.stringify(songs));
     song.classList.add("active");
     song.scrollIntoView();
+    audioActiu.pause();
+    guardarEstat();
+    let imatge = document.querySelector("#play .icon")
+    imatge.style.backgroundImage = 'url("./icons/play.png")';
 }
 
 function playpause(){
     let imatge = document.querySelector("#play .icon")
-    console.log(audioActiu.paused);
     if(audioActiu.paused){
         audioActiu.play();
         imatge.style.backgroundImage = 'url("./icons/pause.png")';
     } else {
+        guardarEstat();
         audioActiu.pause();
         imatge.style.backgroundImage = 'url("./icons/play.png")';
     }
@@ -57,13 +62,18 @@ function resetplaying(){
     });
 }
 
+function guardarEstat(){
+    let audios = document.querySelectorAll(".listsong audio");
+    audios.forEach((e,i) => {
+        console.log(e.duration);
+        songs[i].elapsed = Math.floor(e.currentTime);
+    });
+    localStorage.setItem("songs",JSON.stringify(songs));
+}
 
-/*TODO oopsi:
-- elapsed songs
-*/
 
-/*TODO: nacockis
+/*TODO
+- quan s'acaba la canço el current time es posa a 0, i es passa a la seguent canço
 - barra 
 - elapsed visual
-- que la icona del pause canvii quan canvies de canço (clickant a una manualment, la pausa i es mostra el play)
 */
