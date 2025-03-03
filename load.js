@@ -19,7 +19,7 @@ let songs = [
         "name":"Una Aventura Misteriosa!",
         "duration":105,
         "img":"./img/db.png",
-        "source":"./songs/db.mp3",
+        "source":"./songs/makafushigi.mp3",
         "playing":false,
         "elapsed":0
     },
@@ -34,7 +34,7 @@ let songs = [
     {
         "name":"We Are!",
         "duration":171,
-        "img":"./img/weare.png",
+        "img":"./img/onepiece.png",
         "source":"./songs/weare.mp3",
         "playing":false,
         "elapsed":0
