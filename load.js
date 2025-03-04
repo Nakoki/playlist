@@ -58,6 +58,7 @@ let songs = [
 ]
 
 let audioActiu;
+let barra;
 
 window.onload = function(){
     if(localStorage.getItem("songs") === null){
@@ -66,6 +67,8 @@ window.onload = function(){
     else{
         songs = JSON.parse(localStorage.getItem("songs"));
     }
+    barra = document.getElementById('songProg');
+
     songs.forEach((song,index) => {
         let div = document.createElement("div");
         div.classList.add("listsong");
@@ -97,7 +100,7 @@ window.onload = function(){
         durationP.classList.add("duration");
         let seconds = song.duration;
         let minutes = Math.floor(seconds/60);
-        let extraSeconds = seconds % 60;
+        let extraSeconds = Math.floor(seconds % 60);
         minutes = minutes < 10 ? "0" + minutes : minutes;
         extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds; 
         durationP.innerText = minutes + ":" + extraSeconds;
@@ -110,7 +113,17 @@ window.onload = function(){
             div.classList.add("active");
             audioActiu = div.querySelector("audio");
             div.scrollIntoView();
+            audioActiu.addEventListener("loadedmetadata", function(){
+                selectSong(div);
+            })
         }
+
+        audio.addEventListener("ended",function(){
+            audioActiu.currentTime = 0;
+            next();
+        });
+        
+
 
 
     });
@@ -119,7 +132,17 @@ window.onload = function(){
     document.getElementById("prev").onclick = previus;
     document.getElementById("play").onclick = playpause;
     document.getElementById("next").onclick = next;
-    
 
     
+    barra.addEventListener('click', function (event) {
+        var durada = audioActiu.duration;
+        var dimBarra = this.max;
+        var pos = event.offsetX / this.offsetWidth * dimBarra;
+        this.value = pos;
+        var posAudio = Math.ceil(pos * durada / dimBarra);
+        audioActiu.currentTime = posAudio;
+        guardarEstat();
+    });
+
 }
+
